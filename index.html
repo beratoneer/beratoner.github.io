@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>𝖇𝖊𝖗𝖆𝖙 𝖔𝖓𝖊𝖗</title>
+  <link rel="icon" href="berat.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop id="bgVideo">
+    <source src="tupac.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Dark overlay for readability -->
+  <div class="overlay"></div>
+
+  <!-- Volume Toggle -->
+  <div id="volumeToggle" onclick="toggleMute()">🔇</div>
+
+  <!-- Navigation Menu -->
+  <div class="menu">
+    <a href="aboutME.html" class="menu-item" id="about">about ME.</a>
+    <a href="contact.html" class="menu-item" id="contact">𝔠𝔬𝔫𝔫𝔫𝔱𝔞𝔠𝔱𝔱𝔱</a>
+    <a href="funn.html" class="menu-item" id="fun">funn</a>
+    <a href="XP.html" class="menu-item" id="XP">XP</a>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    
+    function toggleMute() {
+      const video = document.getElementById("bgVideo");
+      const icon = document.getElementById("volumeToggle");
+      video.muted = !video.muted;
+      icon.textContent = video.muted ? "🔇" : "🔊";
+    }
+  </script>
+</body>
+</html> 

@@ -1,0 +1,76 @@
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  color: white;
+}
+
+/* Fotoğraf arkaplan */
+#bgPhoto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+  animation: slowPan 30s infinite alternate;
+}
+
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+/* Contact container */
+.contact-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.contact-info {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+
+.contact-item {
+  margin: 1.5rem 0;
+  font-size: 1.2rem;
+}
+
+.contact-item a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 0.3rem 0;
+}
+
+.contact-item a:hover {
+  transform: translateX(5px);
+  text-shadow: 0 0 5px white;
+}
+

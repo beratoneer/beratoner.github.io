@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝖇𝖊𝖗𝖆𝖙 𝖔𝖓𝖊𝖗</title>
+    <link rel="icon" href="berat.jpeg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="aboutME.css">
+</head>
+<body>
+    <!-- Video (muted olmadan, direkt sesli) -->
+    <video autoplay loop id="bgVideo">
+        <source src="bike_edit.mp4" type="video/mp4">
+    </video>
+
+    <!-- Karanlık overlay -->
+    <div class="overlay"></div>
+
+    <!-- Ses Butonu -->
+    <button id="volumeToggle">🔊</button>
+
+    <!-- Ana Metin -->
+    <div class="video-text">
+        2 wheels. One soul.<br>
+        That's all.
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('bgVideo');
+            const volumeToggle = document.getElementById('volumeToggle');
+            
+            // 1. VİDEOYU AYARLA VE SESLİ BAŞLAT
+            function setupVideo() {
+                // Video boyutlarını ayarla
+                resizeVideo();
+                
+                // Sesli başlat (tüm cihazlar için)
+                video.muted = false;
+                video.play().catch(e => {
+                    console.log("Otomatik oynatma engellendi:", e);
+                    // Kullanıcı etkileşimi bekleyin
+                    volumeToggle.style.display = 'block';
+                });
+            }
+            
+            // 2. EKRAN BOYUTU DEĞİŞTİĞİNDE VİDEOYU YENİDEN AYARLA
+            function resizeVideo() {
+                const windowWidth = window.innerWidth;
+                const windowHeight = window.innerHeight;
+                const windowRatio = windowWidth / windowHeight;
+                const videoRatio = video.videoWidth / video.videoHeight;
+                
+                if (windowRatio > 1) {
+                    // Yatay mod
+                    video.style.width = '100%';
+                    video.style.height = 'auto';
+                } else {
+                    // Dikey mod
+                    video.style.width = 'auto';
+                    video.style.height = '100%';
+                }
+            }
+            
+            // 3. SES KONTROLÜ
+            volumeToggle.addEventListener('click', function() {
+                video.muted = !video.muted;
+                volumeToggle.textContent = video.muted ? '🔇' : '🔊';
+                if(!video.muted && video.paused) video.play();
+            });
+            
+            // OLAYLARI TETİKLE
+            window.addEventListener('resize', resizeVideo);
+            video.addEventListener('loadedmetadata', resizeVideo);
+            setupVideo();
+        });
+    </script>
+</body>
+</html>
